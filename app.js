@@ -3,7 +3,7 @@ function updateContactList() {
 		if (err != null) {
 			return alert(err);
 		} else {
-			cozysdk.run('BankOperation', 'all', {"include_docs":true,"startkey":"2016-11","endkey":"2016-12"}, function(err, operations) {
+			cozysdk.run('BankOperation', 'all', {"include_docs":true,"startkey":"2016-02","endkey":"2016-03"}, function(err, operations) {
 				if (err != null) {
 					return alert(err);
 				} else {
