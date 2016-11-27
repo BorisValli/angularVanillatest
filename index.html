@@ -5,10 +5,15 @@
 		<title>Contact APP in VanillaJS</title>
     </head>
     <body>
-		<h1>Les données =D</h1>
-		<label name="solde" class="solde"></label>
-		<label name="soldeMoiPrecedent" class="soldeMoiPrecedent"></label>
-		<label name="extra" class="extra"></label> 
+		<h1>Les données de pd =D</h1>
+		<label id="solde" name="solde" class="solde"></label>
+		<label id="soldeMoiPrecedent" name="soldeMoiPrecedent" class="soldeMoiPrecedent"></label>
+		<script>
+var extra = document.getElementById("solde");
+	extra -= document.getElementById("soldeMoiPrecedent");
+</script>
+		<label name="extralabel" class="extra"></label> 
+
 		<table align="center" class="operation-list"></table>
 		<script src="vendor/cozysdk-client.js"></script>
 		<script src="app.js"></script>
