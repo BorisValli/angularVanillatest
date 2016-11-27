@@ -1,21 +1,33 @@
 function updateContactList() {
-	cozysdk.defineRequest('Contact', 'all', 'function(doc) { emit(doc.n); }', function(err, res) {
+	cozysdk.defineRequest('BankOperation', 'all', 'function(doc) { emit(doc.n); }', function(err, res) {
 		if (err != null) {
 			return alert(err);
 		} else {
-			cozysdk.run('Contact', 'all', {}, function(err, res) {
+			cozysdk.run('BankOperation', 'all', {}, function(err, res) {
 				if (err != null) {
 					return alert(err);
 				} else {
 					var contacts = JSON.parse("" + res);
-					contacts.forEach(function(contactName) {
-						contactName.key = contactName.key.replace(/ /g, '\u00a0');
+					contacts.forEach(function(operations) {
+						amount.key = amount.key.replace(/ /g, '\u00a0');
 					});
-					render(contacts);
+					render(operations);
 				}
 			});
 		}
 	});
+}
+
+function render(operations) {
+	var i;
+	var HTML = '';
+	for (i = 0; i < operations.length; i++) {
+		var template = '<tr data-id="' + operations[i].id + '">' 
+		+ '<td><label>' + operations[i].key + '</label></td>' 
+		+ '</tr>';
+		HTML = HTML + template;
+	}
+	document.querySelector('.operation-list').innerHTML = HTML;
 }
 
 function render(contacts) {
