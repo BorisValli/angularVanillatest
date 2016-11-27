@@ -1,3 +1,5 @@
+var extra = 0;
+
 function updateContactList() {
 	cozysdk.defineRequest('BankOperation', 'all', 'function(doc) {emit(doc.date);}', function(err, res) {
 		if (err != null) {
@@ -71,6 +73,7 @@ function soldeop(operations)
 		solde += operations[i].doc.amount;
 	}
 	var aff = '<h1> Solde : '+ solde + '<h1>';
+	extra += solde;
 	HTML = HTML + aff;
 	document.querySelector('.solde').innerHTML = HTML;
 }
@@ -83,6 +86,7 @@ function soldeopMoiPrecedent(operations)
 	{
 		solde += operations[i].doc.amount;
 	}
+	extra -= solde;
 	var aff = '<h1>Au moi précédent tu avais : '+ solde + '<h1>';
 	HTML = HTML + aff;
 	document.querySelector('.soldeMoiPrecedent').innerHTML = HTML;
@@ -112,6 +116,11 @@ function renderb(contacts) {
 	}
 	document.querySelector('.contact-list').innerHTML = HTML;
 }
+
+var HTML= '';
+var template = 'Extra = '+extra;
+HTML = HTML + template;
+document.querySelector('.extra').innerHTML = HTML;
 document.addEventListener("DOMContentLoaded", updateContactList);
 document.addEventListener("DOMContentLoaded", solde);
 document.addEventListener("DOMContentLoaded", soldeMoisPrecedent);
