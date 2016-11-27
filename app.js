@@ -30,7 +30,7 @@ function render(operations) {
 	document.querySelector('.operation-list').innerHTML = HTML;
 }
 
-function render(contacts) {
+function renderb(contacts) {
 	var i;
 	var HTML = '';
 	for (i = 0; i < contacts.length; i++) {
