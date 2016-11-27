@@ -6,8 +6,8 @@
   "cozy-displayName": "Serverless app example",
   "icon-path": "main_icon.png",
   "cozy-permissions": {
-    "Contact": {
-      "description": "To easily find your contact when talking about someone."
+    "BankOperation": {
+      "description": "We need your Bank data to calculate some operations : for exemple 'Extra'."
     }
   }
 }
