@@ -3,14 +3,14 @@ function updateContactList() {
 		if (err != null) {
 			return alert(err);
 		} else {
-			cozysdk.run('BankOperation', 'all', {"include_docs":true,"startkey":"2016-01","endkey":"2016-02"}, function(err, res) {
+			cozysdk.run('BankOperation', 'all', {"include_docs":true,"startkey":"2016-11","endkey":"2016-12"}, function(err, operations) {
 				if (err != null) {
 					return alert(err);
 				} else {
-					var operations = JSON.parse("" + res);
-					operations.forEach(function(operations) {
-						amount.key = amount.key.replace(/ /g, '\u00a0');
-					});
+					operations = JSON.parse("" + operations);	
+					//operations.forEach(function(operation) {
+					//	operations.doc.amount = operation.doc.amount;
+					//});
 					render(operations);
 				}
 			});
@@ -22,8 +22,9 @@ function render(operations) {
 	var i;
 	var HTML = '';
 	for (i = 0; i < operations.length; i++) {
+		console.log(operations[i]);
 		var template = '<tr data-id="' + operations[i].id + '">' 
-		+ '<td><label>' + operations[i].key + '</label></td>' 
+		+ '<td><label>' + operations[i].doc.amount + '</label></td>' 
 		+ '</tr>';
 		HTML = HTML + template;
 	}
