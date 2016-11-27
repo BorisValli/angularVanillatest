@@ -1,14 +1,14 @@
 function updateContactList() {
-	cozysdk.defineRequest('BankOperation', 'all', 'function(doc) { emit(doc.n); }', function(err, res) {
+	cozysdk.defineRequest('BankOperation', 'all', 'function(doc) {emit(doc.date);}', function(err, res) {
 		if (err != null) {
 			return alert(err);
 		} else {
-			cozysdk.run('BankOperation', 'all', {}, function(err, res) {
+			cozysdk.run('BankOperation', 'all', {"include_docs":true,"startkey":"2016-01","endkey":"2016-02"}, function(err, res) {
 				if (err != null) {
 					return alert(err);
 				} else {
-					var contacts = JSON.parse("" + res);
-					contacts.forEach(function(operations) {
+					var operations = JSON.parse("" + res);
+					operations.forEach(function(operations) {
 						amount.key = amount.key.replace(/ /g, '\u00a0');
 					});
 					render(operations);
