@@ -171,7 +171,7 @@ function soldeopMoiPrecedent(operations)
 	{
 		solde += operations[i].doc.amount;
 	}
-	var aff = '<h1>Au moi précédent tu avais : '+ solde + '<h1>';
+	var aff = '<h1>Au mois précédent tu avais : '+ solde + '<h1>';
 	HTML = HTML + aff;
 	document.querySelector('.soldeMoiPrecedent').innerHTML = HTML;
 return (solde);
